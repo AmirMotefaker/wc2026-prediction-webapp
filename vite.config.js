@@ -3,13 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    proxy: {
-      // In dev: /api/fifa-rankings -> Vercel dev server or direct fetch
-      "/api": {
-        target: "http://localhost:3000",
-        changeOrigin: true,
-      },
-    },
-  },
+  // No proxy needed locally — useFIFARankings.js automatically
+  // falls back to static teams.json data when /api is unavailable.
+  // On Vercel, /api/fifa-rankings is served automatically by the
+  // serverless function in api/fifa-rankings.js.
 });
