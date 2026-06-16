@@ -5,8 +5,19 @@ import { useAuth } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Home from "./pages/Home";
 import Groups from "./pages/Groups";
 import Fixtures from "./pages/Fixtures";
+import Predictions from "./pages/Predictions";
+import MyPredictions from "./pages/MyPredictions";
+
+const NAV_LINKS = [
+  { to: "/",                label: "Home",          icon: "🏠" },
+  { to: "/groups",          label: "Groups",        icon: "🗂️" },
+  { to: "/fixtures",        label: "Fixtures",      icon: "📅" },
+  { to: "/my-predictions",  label: "My Picks",      icon: "🎯" },
+  { to: "/predictions",     label: "AI Predictions",icon: "🤖" },
+];
 
 function Layout({ children }) {
   const { profile, signOut } = useAuth();
@@ -18,41 +29,45 @@ function Layout({ children }) {
     navigate("/login");
   }
 
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/groups", label: "Groups" },
-    { to: "/fixtures", label: "Fixtures" },
-  ];
-
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-          <h1 className="text-lg font-bold text-primary-800">⚽ WC2026 Predictor</h1>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600 hidden sm:inline">
+          <div className="flex items-center gap-2">
+            <span className="text-xl">⚽</span>
+            <span className="font-bold text-primary-800 text-lg">
+              WC2026 Predictor
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-gray-600 hidden sm:inline font-medium">
               {profile?.displayName}
+            </span>
+            <span className="text-sm text-primary-600 font-bold hidden sm:inline">
+              {profile?.totalPoints ?? 0} pts
             </span>
             <button
               onClick={handleSignOut}
-              className="text-sm text-red-500 hover:text-red-700 font-medium"
+              className="text-xs text-red-500 hover:text-red-700 border border-red-200 px-2 py-1 rounded hover:bg-red-50 transition"
             >
               Sign Out
             </button>
           </div>
         </div>
-        <nav className="max-w-4xl mx-auto px-4 flex gap-1 -mb-px">
-          {navLinks.map((link) => (
+
+        <nav className="max-w-4xl mx-auto px-4 flex gap-0 -mb-px overflow-x-auto">
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`px-4 py-2 text-sm font-medium border-b-2 transition ${
+              className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium border-b-2 whitespace-nowrap transition ${
                 location.pathname === link.to
                   ? "border-primary-600 text-primary-600"
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
-              {link.label}
+              <span>{link.icon}</span>
+              <span>{link.label}</span>
             </Link>
           ))}
         </nav>
@@ -63,69 +78,26 @@ function Layout({ children }) {
   );
 }
 
-function Home() {
-  const { profile } = useAuth();
-
+function ProtectedLayout({ component: Component }) {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Welcome, {profile?.displayName}! 🎉
-        </h2>
-        <p className="text-gray-500">
-          Your total points: <span className="font-bold text-primary-600">{profile?.totalPoints ?? 0}</span>
-        </p>
-        <div className="flex gap-3 justify-center mt-6">
-          <Link
-            to="/groups"
-            className="bg-primary-600 hover:bg-primary-800 text-white font-medium px-4 py-2 rounded-lg transition"
-          >
-            View Groups
-          </Link>
-          <Link
-            to="/fixtures"
-            className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-lg transition"
-          >
-            View Fixtures
-          </Link>
-        </div>
-        <p className="text-gray-400 text-sm mt-6">
-          🚧 Predictions and leaderboard coming in the next phases!
-        </p>
-      </div>
-    </div>
+    <ProtectedRoute>
+      <Layout>
+        <Component />
+      </Layout>
+    </ProtectedRoute>
   );
 }
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login"  element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <Layout><Home /></Layout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/groups"
-        element={
-          <ProtectedRoute>
-            <Layout><Groups /></Layout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/fixtures"
-        element={
-          <ProtectedRoute>
-            <Layout><Fixtures /></Layout>
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/"               element={<ProtectedLayout component={Home} />} />
+      <Route path="/groups"         element={<ProtectedLayout component={Groups} />} />
+      <Route path="/fixtures"       element={<ProtectedLayout component={Fixtures} />} />
+      <Route path="/my-predictions" element={<ProtectedLayout component={MyPredictions} />} />
+      <Route path="/predictions"    element={<ProtectedLayout component={Predictions} />} />
     </Routes>
   );
 }
