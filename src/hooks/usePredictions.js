@@ -2,6 +2,8 @@
 //
 // Manages reading/writing the current user's predictions in Firestore.
 // Collection: predictions/{uid}_{match_id}
+// Each prediction includes a "scored" flag used by the scoring cron job
+// to award points exactly once per finished match.
 
 import { useState, useEffect, useCallback } from "react";
 import {
@@ -12,10 +14,9 @@ import { useAuth } from "../context/AuthContext";
 
 export function usePredictions() {
   const { user } = useAuth();
-  const [predictions, setPredictions] = useState({}); // { match_id: {scoreA, scoreB} }
+  const [predictions, setPredictions] = useState({}); // { match_id: {scoreA, scoreB, pointsAwarded, scored} }
   const [loading, setLoading] = useState(true);
 
-  // Load all of this user's predictions once
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -31,7 +32,12 @@ export function usePredictions() {
         const map = {};
         snap.docs.forEach((d) => {
           const data = d.data();
-          map[data.matchId] = { scoreA: data.scoreA, scoreB: data.scoreB };
+          map[data.matchId] = {
+            scoreA: data.scoreA,
+            scoreB: data.scoreB,
+            scored: data.scored ?? false,
+            pointsAwarded: data.pointsAwarded ?? null,
+          };
         });
         setPredictions(map);
       } catch (err) {
@@ -43,7 +49,10 @@ export function usePredictions() {
     load();
   }, [user]);
 
-  // Save/update a single prediction
+  // Save/update a single prediction.
+  // Always resets "scored" to false on edit — this protects against
+  // someone changing a pick after a result is in but before the next
+  // cron run, while also ensuring fresh predictions get scored.
   const savePrediction = useCallback(
     async (matchId, scoreA, scoreB) => {
       if (!user) return { ok: false, error: "Not signed in" };
@@ -54,11 +63,13 @@ export function usePredictions() {
           matchId,
           scoreA,
           scoreB,
+          scored: false,
+          pointsAwarded: null,
           updatedAt: new Date(),
         });
         setPredictions((prev) => ({
           ...prev,
-          [matchId]: { scoreA, scoreB },
+          [matchId]: { scoreA, scoreB, scored: false, pointsAwarded: null },
         }));
         return { ok: true };
       } catch (err) {

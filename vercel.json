@@ -3,8 +3,13 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "functions": {
-    "api/fifa-rankings.js": {
-      "maxDuration": 10
+    "api/fifa-rankings.js": { "maxDuration": 10 },
+    "api/calculate-scores.js": { "maxDuration": 30 }
+  },
+  "crons": [
+    {
+      "path": "/api/calculate-scores",
+      "schedule": "0 */6 * * *"
     }
-  }
+  ]
 }
