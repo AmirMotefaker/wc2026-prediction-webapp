@@ -2,19 +2,19 @@
 //
 // Manages reading/writing the current user's predictions in Firestore.
 // Collection: predictions/{uid}_{match_id}
-// Each prediction includes a "scored" flag used by the scoring cron job
-// to award points exactly once per finished match.
+// Each prediction includes a "scored" flag (used by the scoring cron job)
+// and "updatedAt" (shown to the user as "Last predicted: ...").
 
 import { useState, useEffect, useCallback } from "react";
 import {
-  doc, setDoc, getDocs, collection, query, where,
+  doc, setDoc, getDocs, collection, query, where, serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { useAuth } from "../context/AuthContext";
 
 export function usePredictions() {
   const { user } = useAuth();
-  const [predictions, setPredictions] = useState({}); // { match_id: {scoreA, scoreB, pointsAwarded, scored} }
+  const [predictions, setPredictions] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,6 +37,7 @@ export function usePredictions() {
             scoreB: data.scoreB,
             scored: data.scored ?? false,
             pointsAwarded: data.pointsAwarded ?? null,
+            updatedAt: data.updatedAt ?? null,
           };
         });
         setPredictions(map);
@@ -49,15 +50,12 @@ export function usePredictions() {
     load();
   }, [user]);
 
-  // Save/update a single prediction.
-  // Always resets "scored" to false on edit — this protects against
-  // someone changing a pick after a result is in but before the next
-  // cron run, while also ensuring fresh predictions get scored.
   const savePrediction = useCallback(
     async (matchId, scoreA, scoreB) => {
       if (!user) return { ok: false, error: "Not signed in" };
       try {
         const docId = `${user.uid}_${matchId}`;
+        const now = new Date();
         await setDoc(doc(db, "predictions", docId), {
           uid: user.uid,
           matchId,
@@ -65,11 +63,11 @@ export function usePredictions() {
           scoreB,
           scored: false,
           pointsAwarded: null,
-          updatedAt: new Date(),
+          updatedAt: serverTimestamp(),
         });
         setPredictions((prev) => ({
           ...prev,
-          [matchId]: { scoreA, scoreB, scored: false, pointsAwarded: null },
+          [matchId]: { scoreA, scoreB, scored: false, pointsAwarded: null, updatedAt: now },
         }));
         return { ok: true };
       } catch (err) {

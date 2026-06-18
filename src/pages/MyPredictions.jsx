@@ -2,6 +2,7 @@
 //
 // Lets users predict scores for upcoming matches, shows the AI engine's
 // suggestion alongside, and displays scored results once matches finish.
+// All dates/times shown in venue local time AND Tehran (Iran) time.
 
 import { useState } from "react";
 import fixturesData from "../data/fixtures.json";
@@ -11,6 +12,23 @@ import AIPredictionCard from "../components/AIPredictionCard";
 
 const GROUP_LETTERS = ["ALL","A","B","C","D","E","F","G","H","I","J","K","L"];
 const VIEW_TABS = ["Upcoming", "Scored"];
+
+const WEEKDAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+function dayOfWeek(dateStr) {
+  const d = new Date(dateStr + "T00:00:00Z");
+  return WEEKDAYS[d.getUTCDay()];
+}
+
+function formatPredictedAt(dateValue) {
+  if (!dateValue) return null;
+  // Firestore Timestamp has toDate(); plain Date objects do not.
+  const d = dateValue.toDate ? dateValue.toDate() : new Date(dateValue);
+  return d.toLocaleString("en-US", {
+    month: "short", day: "numeric",
+    hour: "2-digit", minute: "2-digit",
+  });
+}
 
 export default function MyPredictions() {
   const { predictions, loading, savePrediction } = usePredictions();
@@ -140,14 +158,31 @@ function PredictionCardInner({ match, venue, existing, saving, saved, onSave }) 
     scoreA !== "" && scoreB !== "" &&
     (scoreA !== existing?.scoreA || scoreB !== existing?.scoreB);
 
+  const predictedAtLabel = existing?.updatedAt ? formatPredictedAt(existing.updatedAt) : null;
+
   return (
     <>
-      <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
-        <span className="bg-gray-100 px-2 py-0.5 rounded font-medium text-gray-600">Group {match.group}</span>
+      <div className="flex items-center gap-2 text-xs text-gray-400 mb-1 flex-wrap">
+        <span className="bg-gray-100 px-2 py-0.5 rounded font-medium text-gray-600">
+          Group {match.group}
+        </span>
         <span>MD{match.matchday}</span>
-        <span>路</span>
-        <span>{match.date}</span>
-        {venue && (<><span>路</span><span>{venue.city}</span></>)}
+        <span>&middot;</span>
+        <span>{dayOfWeek(match.date)}, {match.date}</span>
+        {venue && (
+          <>
+            <span>&middot;</span>
+            <span>{venue.city}</span>
+          </>
+        )}
+      </div>
+
+      <div className="flex items-center gap-3 text-xs text-gray-400 mb-3 flex-wrap">
+        {match.kickoff_local && <span>Kickoff: {match.kickoff_local} local</span>}
+        <span>
+          {match.kickoff_tehran} Tehran
+          {match.kickoff_tehran_day_offset > 0 ? " (+1 day)" : ""}
+        </span>
       </div>
 
       <div className="flex items-center justify-center gap-3">
@@ -164,7 +199,7 @@ function PredictionCardInner({ match, venue, existing, saving, saved, onSave }) 
         <span className="flex-1 font-semibold text-gray-800">{match.team_b_name}</span>
       </div>
 
-      <div className="flex justify-center mt-3">
+      <div className="flex flex-col items-center gap-1 mt-3">
         <button
           disabled={!hasChanges || saving}
           onClick={() => onSave(match.match_id, scoreA, scoreB)}
@@ -176,6 +211,11 @@ function PredictionCardInner({ match, venue, existing, saving, saved, onSave }) 
         >
           {saving ? "Saving..." : saved ? "Saved" : existing ? "Update" : "Save Prediction"}
         </button>
+        {predictedAtLabel && (
+          <span className="text-xs text-gray-400">
+            Last predicted: {predictedAtLabel}
+          </span>
+        )}
       </div>
     </>
   );
@@ -192,7 +232,7 @@ function ScoredCard({ match, prediction }) {
     }`}>
       <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
         <span className="bg-gray-100 px-2 py-0.5 rounded font-medium text-gray-600">Group {match.group}</span>
-        <span>{match.date}</span>
+        <span>{dayOfWeek(match.date)}, {match.date}</span>
       </div>
       <div className="flex items-center justify-center gap-4">
         <div className="flex-1 text-right">

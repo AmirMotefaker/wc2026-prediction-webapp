@@ -4,9 +4,10 @@
     "stage": "group_stage",
     "total_matches": 72,
     "data_source": "FIFA.com, ESPN, CBS Sports, Yahoo Sports — verified results",
-    "last_updated": "2026-06-14",
-    "results_status": "Groups A-D matchday 1 completed; Groups E-F matchday 1 in progress; Groups G-L matchday 1 upcoming",
-    "version": "2.0"
+    "last_updated": "2026-06-18",
+    "results_status": "Matchday 1 complete for all 12 groups (Jun 11-17). Matchday 2 begins Jun 18.",
+    "version": "2.0",
+    "timezone_note": "kickoff_utc is UTC. kickoff_tehran is Iran Standard Time (UTC+3:30). kickoff_local is the venue's local time."
   },
   "fixtures": [
     {
@@ -25,7 +26,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 0
+      "score_b": 0,
+      "kickoff_tehran": "00:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M002",
@@ -43,7 +46,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 1
+      "score_b": 1,
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M003",
@@ -61,7 +66,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "19:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M004",
@@ -79,7 +86,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M005",
@@ -97,7 +106,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M006",
@@ -115,7 +126,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M007",
@@ -133,7 +146,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1
+      "score_b": 1,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M008",
@@ -151,7 +166,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1
+      "score_b": 1,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M009",
@@ -169,7 +186,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M010",
@@ -187,7 +206,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M011",
@@ -205,7 +226,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M012",
@@ -223,7 +246,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M013",
@@ -241,7 +266,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1
+      "score_b": 1,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M014",
@@ -259,7 +286,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 0
+      "score_b": 0,
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M015",
@@ -277,7 +306,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M016",
@@ -295,7 +326,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M017",
@@ -313,7 +346,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M018",
@@ -331,7 +366,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M019",
@@ -349,7 +386,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 4,
-      "score_b": 1
+      "score_b": 1,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M020",
@@ -367,7 +406,9 @@
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 0
+      "score_b": 0,
+      "kickoff_tehran": "07:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M021",
@@ -385,7 +426,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M022",
@@ -403,7 +446,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "07:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M023",
@@ -421,7 +466,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M024",
@@ -439,7 +486,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M025",
@@ -455,9 +504,11 @@
       "date": "2026-06-14",
       "kickoff_utc": "17:00",
       "stage": "group",
-      "status": "live",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 7,
+      "score_b": 1,
+      "kickoff_tehran": "20:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M026",
@@ -473,9 +524,11 @@
       "date": "2026-06-15",
       "kickoff_utc": "01:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 1,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M027",
@@ -493,7 +546,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "23:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M028",
@@ -511,7 +566,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M029",
@@ -529,7 +586,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "23:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M030",
@@ -547,7 +606,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "23:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M031",
@@ -563,9 +624,11 @@
       "date": "2026-06-14",
       "kickoff_utc": "20:00",
       "stage": "group",
-      "status": "live",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 2,
+      "score_b": 2,
+      "kickoff_tehran": "23:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M032",
@@ -581,9 +644,11 @@
       "date": "2026-06-15",
       "kickoff_utc": "02:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 5,
+      "score_b": 1,
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M033",
@@ -601,7 +666,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "20:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M034",
@@ -619,7 +686,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "07:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M035",
@@ -637,7 +706,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M036",
@@ -655,7 +726,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M037",
@@ -671,9 +744,11 @@
       "date": "2026-06-15",
       "kickoff_utc": "19:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 1,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M038",
@@ -689,9 +764,11 @@
       "date": "2026-06-16",
       "kickoff_utc": "01:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 2,
+      "score_b": 2,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M039",
@@ -709,7 +786,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M040",
@@ -727,7 +806,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M041",
@@ -745,7 +826,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "06:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M042",
@@ -763,7 +846,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "06:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M043",
@@ -779,9 +864,11 @@
       "date": "2026-06-15",
       "kickoff_utc": "17:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 0,
+      "kickoff_tehran": "20:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M044",
@@ -797,9 +884,11 @@
       "date": "2026-06-15",
       "kickoff_utc": "22:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 1,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M045",
@@ -817,7 +906,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "19:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M046",
@@ -835,7 +926,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M047",
@@ -853,7 +946,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M048",
@@ -871,7 +966,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M049",
@@ -887,9 +984,11 @@
       "date": "2026-06-16",
       "kickoff_utc": "19:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 1,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M050",
@@ -905,9 +1004,11 @@
       "date": "2026-06-16",
       "kickoff_utc": "22:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 4,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M051",
@@ -925,7 +1026,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "00:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M052",
@@ -943,7 +1046,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M053",
@@ -961,7 +1066,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M054",
@@ -979,7 +1086,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M055",
@@ -995,9 +1104,11 @@
       "date": "2026-06-16",
       "kickoff_utc": "22:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 0,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M056",
@@ -1013,9 +1124,11 @@
       "date": "2026-06-17",
       "kickoff_utc": "01:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 1,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M057",
@@ -1033,7 +1146,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "20:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M058",
@@ -1051,7 +1166,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "06:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M059",
@@ -1069,7 +1186,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M060",
@@ -1087,7 +1206,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M061",
@@ -1103,9 +1224,11 @@
       "date": "2026-06-17",
       "kickoff_utc": "01:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 1,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M062",
@@ -1121,9 +1244,11 @@
       "date": "2026-06-17",
       "kickoff_utc": "22:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 1,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M063",
@@ -1141,7 +1266,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M064",
@@ -1159,7 +1286,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M065",
@@ -1177,7 +1306,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M066",
@@ -1195,7 +1326,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M067",
@@ -1211,9 +1344,11 @@
       "date": "2026-06-17",
       "kickoff_utc": "22:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 4,
+      "score_b": 2,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M068",
@@ -1229,9 +1364,11 @@
       "date": "2026-06-17",
       "kickoff_utc": "01:00",
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 1,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M069",
@@ -1249,7 +1386,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M070",
@@ -1267,7 +1406,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0
     },
     {
       "match_id": "M071",
@@ -1285,7 +1426,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "00:30",
+      "kickoff_tehran_day_offset": 1
     },
     {
       "match_id": "M072",
@@ -1303,7 +1446,9 @@
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null
+      "score_b": null,
+      "kickoff_tehran": "00:30",
+      "kickoff_tehran_day_offset": 1
     }
   ]
 }

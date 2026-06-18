@@ -1,5 +1,5 @@
 // src/pages/Fixtures.jsx
-// Real WC2026 fixtures — verified results from FIFA.com / ESPN / CBS Sports
+// Real WC2026 fixtures with verified results, local + Tehran kickoff times
 
 import { useState } from "react";
 import fixturesData from "../data/fixtures.json";
@@ -13,6 +13,12 @@ const STATUS_BADGE = {
   live:      { label: "LIVE",  cls: "bg-red-100 text-red-600 animate-pulse" },
   scheduled: { label: "SCH",   cls: "bg-blue-50 text-blue-500" },
 };
+
+function formatKickoffLocal(fixture) {
+  // venue has local time conventions; we display the venue city's local kickoff
+  // using a simple HH:MM since we don't carry timezone offsets per venue here.
+  return fixture.kickoff_local || null;
+}
 
 export default function Fixtures() {
   const [groupFilter, setGroupFilter] = useState("ALL");
@@ -42,10 +48,9 @@ export default function Fixtures() {
         </div>
       </div>
       <p className="text-gray-400 text-xs mb-4">
-        Source: FIFA.com · ESPN · CBS Sports · Last updated June 14, 2026
+        Source: FIFA.com · ESPN · CBS Sports · Last updated June 18, 2026 · Times shown: venue local time and Iran Standard Time (UTC+3:30)
       </p>
 
-      {/* Group filter */}
       <div className="flex flex-wrap gap-2 mb-3">
         {GROUP_LETTERS.map((g) => (
           <button key={g} onClick={() => setGroupFilter(g)}
@@ -57,7 +62,6 @@ export default function Fixtures() {
         ))}
       </div>
 
-      {/* Matchday filter */}
       <div className="flex gap-2 mb-6">
         {MD_FILTERS.map((md) => (
           <button key={md} onClick={() => setMdFilter(md)}
@@ -69,13 +73,13 @@ export default function Fixtures() {
         ))}
       </div>
 
-      {/* Fixtures */}
       <div className="space-y-2">
         {fixtures.map((match) => {
           const venue  = venuesById[match.venue];
           const badge  = STATUS_BADGE[match.status] || STATUS_BADGE.scheduled;
           const isDone = match.status === "finished";
           const isLive = match.status === "live";
+          const localTime = formatKickoffLocal(match);
 
           return (
             <div key={match.match_id}
@@ -83,7 +87,6 @@ export default function Fixtures() {
                 isLive ? "border-red-400" : isDone ? "border-green-400" : "border-gray-200"
               }`}>
 
-              {/* Header row */}
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2 text-xs text-gray-400">
                   <span className="bg-gray-100 px-2 py-0.5 rounded font-medium text-gray-600">
@@ -98,7 +101,6 @@ export default function Fixtures() {
                 </span>
               </div>
 
-              {/* Score row */}
               <div className="flex items-center justify-center gap-4">
                 <span className={`flex-1 text-right font-semibold ${isDone || isLive ? "text-gray-800" : "text-gray-500"}`}>
                   {match.team_a_name}
@@ -123,11 +125,17 @@ export default function Fixtures() {
                 </span>
               </div>
 
-              {/* Venue */}
               {venue && (
                 <p className="text-center text-xs text-gray-400 mt-2">
                   📍 {venue.common_name}, {venue.city}
                 </p>
+              )}
+
+              {!isDone && (
+                <div className="flex justify-center gap-4 text-xs text-gray-400 mt-1.5">
+                  {localTime && <span>🕐 {localTime} local</span>}
+                  <span>🇮🇷 {match.kickoff_tehran} Tehran{match.kickoff_tehran_day_offset > 0 ? " (+1 day)" : ""}</span>
+                </div>
               )}
             </div>
           );
