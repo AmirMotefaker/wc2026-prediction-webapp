@@ -95,10 +95,10 @@ wc2026-prediction-webapp/
 | 1 | Project setup (Vite + React + Tailwind) | ✅ |
 | 2 | Firebase setup (Auth + Firestore) | ✅ |
 | 3 | Authentication (Login/Signup/Protected routes) | ✅ |
-| 4 | Fixtures & groups display (real WC2026 data) | 🚧 |
-| 5 | Prediction form | ⬜ |
-| 6 | Scoring & leaderboard | ⬜ |
-| 7 | AI prediction integration | ⬜ |
+| 4 | Fixtures & groups display (real WC2026 data) | ✅ |
+| 5 | Prediction form | ✅ |
+| 6 | Scoring & leaderboard | ✅ |
+| 7 | AI prediction integration | ✅ |
 
 ---
 
