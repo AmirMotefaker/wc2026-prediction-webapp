@@ -8,7 +8,6 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Groups from "./pages/Groups";
 import Fixtures from "./pages/Fixtures";
-import Predictions from "./pages/Predictions";
 import MyPredictions from "./pages/MyPredictions";
 import Profile from "./pages/Profile";
 
@@ -16,11 +15,10 @@ const GITHUB_URL = "https://github.com/AmirMotefaker/wc2026-prediction-webapp";
 const SITE_URL   = "https://amirmotefaker.ir";
 
 const NAV_LINKS = [
-  { to: "/",                label: "Home",          icon: "🏠" },
-  { to: "/groups",          label: "Groups",        icon: "🗂️" },
-  { to: "/fixtures",        label: "Fixtures",      icon: "📅" },
-  { to: "/my-predictions",  label: "My Picks",      icon: "🎯" },
-  { to: "/predictions",     label: "AI Predictions",icon: "🤖" },
+  { to: "/",                label: "Home",     icon: "🏠" },
+  { to: "/groups",          label: "Groups",   icon: "🗂️" },
+  { to: "/fixtures",        label: "Fixtures", icon: "📅" },
+  { to: "/my-predictions",  label: "My Picks", icon: "🎯" },
 ];
 
 function GitHubIcon({ className }) {
@@ -45,40 +43,21 @@ function Layout({ children }) {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Logo + title */}
           <div className="flex items-center gap-2 min-w-0">
             <span className="text-xl">⚽</span>
             <h1 className="font-bold text-primary-800 text-base sm:text-lg truncate">
               WorldCup 2026 Predictor by{" "}
-              <a
-                href={GITHUB_URL.replace("/wc2026-prediction-webapp", "")}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:underline text-primary-600"
-              >
+              <a href="https://github.com/AmirMotefaker" target="_blank" rel="noreferrer" className="hover:underline text-primary-600">
                 Amir Motefaker
               </a>
             </h1>
           </div>
 
-          {/* Right side: external logos + user menu */}
           <div className="flex items-center gap-3 shrink-0">
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noreferrer"
-              title="View source on GitHub"
-              className="text-gray-500 hover:text-gray-800 transition"
-            >
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer" title="View source on GitHub" className="text-gray-500 hover:text-gray-800 transition">
               <GitHubIcon className="w-5 h-5" />
             </a>
-            <a
-              href={SITE_URL}
-              target="_blank"
-              rel="noreferrer"
-              title="amirmotefaker.ir"
-              className="text-gray-500 hover:text-primary-600 transition"
-            >
+            <a href={SITE_URL} target="_blank" rel="noreferrer" title="amirmotefaker.ir" className="text-gray-500 hover:text-primary-600 transition">
               <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -102,10 +81,7 @@ function Layout({ children }) {
               {profile?.totalPoints ?? 0} pts
             </span>
 
-            <button
-              onClick={handleSignOut}
-              className="text-xs text-red-500 hover:text-red-700 border border-red-200 px-2 py-1 rounded hover:bg-red-50 transition"
-            >
+            <button onClick={handleSignOut} className="text-xs text-red-500 hover:text-red-700 border border-red-200 px-2 py-1 rounded hover:bg-red-50 transition">
               Sign Out
             </button>
           </div>
@@ -113,15 +89,10 @@ function Layout({ children }) {
 
         <nav className="max-w-4xl mx-auto px-4 flex gap-0 -mb-px overflow-x-auto">
           {NAV_LINKS.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
+            <Link key={link.to} to={link.to}
               className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium border-b-2 whitespace-nowrap transition ${
-                location.pathname === link.to
-                  ? "border-primary-600 text-primary-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700"
-              }`}
-            >
+                location.pathname === link.to ? "border-primary-600 text-primary-600" : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}>
               <span>{link.icon}</span>
               <span>{link.label}</span>
             </Link>
@@ -137,9 +108,7 @@ function Layout({ children }) {
 function ProtectedLayout({ component: Component }) {
   return (
     <ProtectedRoute>
-      <Layout>
-        <Component />
-      </Layout>
+      <Layout><Component /></Layout>
     </ProtectedRoute>
   );
 }
@@ -153,7 +122,6 @@ export default function App() {
       <Route path="/groups"         element={<ProtectedLayout component={Groups} />} />
       <Route path="/fixtures"       element={<ProtectedLayout component={Fixtures} />} />
       <Route path="/my-predictions" element={<ProtectedLayout component={MyPredictions} />} />
-      <Route path="/predictions"    element={<ProtectedLayout component={Predictions} />} />
       <Route path="/profile"        element={<ProtectedLayout component={Profile} />} />
     </Routes>
   );
