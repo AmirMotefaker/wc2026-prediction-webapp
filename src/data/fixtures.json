@@ -3,11 +3,10 @@
     "tournament": "FIFA World Cup 2026",
     "stage": "group_stage",
     "total_matches": 72,
-    "data_source": "FIFA.com, ESPN, CBS Sports, Yahoo Sports — verified results",
-    "last_updated": "2026-06-18",
-    "results_status": "Matchday 1 complete for all 12 groups (Jun 11-17). Matchday 2 begins Jun 18.",
-    "version": "2.0",
-    "timezone_note": "kickoff_utc is UTC. kickoff_tehran is Iran Standard Time (UTC+3:30). kickoff_local is the venue's local time."
+    "data_source": "Yahoo Sports, CBS Sports, UEFA, ESPN — verified Jun 25, 2026",
+    "last_updated": "2026-06-25",
+    "results_status": "MD1 complete all groups, MD2 complete all groups, MD3 in progress",
+    "version": "4.0"
   },
   "fixtures": [
     {
@@ -23,12 +22,13 @@
       "city": "Mexico City",
       "date": "2026-06-11",
       "kickoff_utc": "21:00",
+      "kickoff_local": "16:00",
+      "kickoff_tehran": "00:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 0,
-      "kickoff_tehran": "00:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 0
     },
     {
       "match_id": "M002",
@@ -43,12 +43,13 @@
       "city": "Guadalajara",
       "date": "2026-06-11",
       "kickoff_utc": "00:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 1,
-      "kickoff_tehran": "03:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M003",
@@ -63,12 +64,13 @@
       "city": "Philadelphia",
       "date": "2026-06-18",
       "kickoff_utc": "16:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "12:00",
       "kickoff_tehran": "19:30",
-      "kickoff_tehran_day_offset": 0
+      "kickoff_tehran_day_offset": 0,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 1
     },
     {
       "match_id": "M004",
@@ -82,13 +84,14 @@
       "venue_name": "AT&T Stadium",
       "city": "Dallas",
       "date": "2026-06-18",
-      "kickoff_utc": "01:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 0
     },
     {
       "match_id": "M005",
@@ -98,17 +101,18 @@
       "team_a_name": "Czechia",
       "team_b": "MEX",
       "team_b_name": "Mexico",
-      "venue": "SFO",
-      "venue_name": "Levi's Stadium",
-      "city": "Santa Clara",
+      "venue": "AZT",
+      "venue_name": "Estadio Azteca",
+      "city": "Mexico City",
       "date": "2026-06-24",
-      "kickoff_utc": "01:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 3
     },
     {
       "match_id": "M006",
@@ -122,13 +126,14 @@
       "venue_name": "SoFi Stadium",
       "city": "Los Angeles",
       "date": "2026-06-24",
-      "kickoff_utc": "01:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 0
     },
     {
       "match_id": "M007",
@@ -142,13 +147,14 @@
       "venue_name": "BMO Field",
       "city": "Toronto",
       "date": "2026-06-12",
-      "kickoff_utc": "19:00",
+      "kickoff_utc": "23:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M008",
@@ -162,13 +168,14 @@
       "venue_name": "Levi's Stadium",
       "city": "Santa Clara",
       "date": "2026-06-13",
-      "kickoff_utc": "22:00",
+      "kickoff_utc": "02:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 1
     },
     {
       "match_id": "M009",
@@ -178,17 +185,18 @@
       "team_a_name": "Switzerland",
       "team_b": "BIH",
       "team_b_name": "Bosnia and Herzegovina",
-      "venue": "ATL",
-      "venue_name": "Mercedes-Benz Stadium",
-      "city": "Atlanta",
+      "venue": "LAX",
+      "venue_name": "SoFi Stadium",
+      "city": "Los Angeles",
       "date": "2026-06-18",
-      "kickoff_utc": "19:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 4,
+      "score_b": 1
     },
     {
       "match_id": "M010",
@@ -203,12 +211,13 @@
       "city": "Houston",
       "date": "2026-06-18",
       "kickoff_utc": "22:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "17:00",
       "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "kickoff_tehran_day_offset": 1,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 6,
+      "score_b": 0
     },
     {
       "match_id": "M011",
@@ -218,17 +227,18 @@
       "team_a_name": "Switzerland",
       "team_b": "CAN",
       "team_b_name": "Canada",
-      "venue": "MIA",
-      "venue_name": "Hard Rock Stadium",
-      "city": "Miami",
+      "venue": "VAN",
+      "venue_name": "BC Place",
+      "city": "Vancouver",
       "date": "2026-06-24",
-      "kickoff_utc": "19:00",
+      "kickoff_utc": "01:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 1
     },
     {
       "match_id": "M012",
@@ -242,13 +252,14 @@
       "venue_name": "Lumen Field",
       "city": "Seattle",
       "date": "2026-06-24",
-      "kickoff_utc": "19:00",
+      "kickoff_utc": "01:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 1
     },
     {
       "match_id": "M013",
@@ -263,12 +274,13 @@
       "city": "East Rutherford NJ",
       "date": "2026-06-13",
       "kickoff_utc": "22:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 1
     },
     {
       "match_id": "M014",
@@ -282,13 +294,14 @@
       "venue_name": "Gillette Stadium",
       "city": "Foxborough MA",
       "date": "2026-06-13",
-      "kickoff_utc": "02:00",
+      "kickoff_utc": "01:00",
+      "kickoff_local": "21:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 0,
-      "kickoff_tehran": "05:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 0
     },
     {
       "match_id": "M015",
@@ -303,12 +316,13 @@
       "city": "Philadelphia",
       "date": "2026-06-19",
       "kickoff_utc": "22:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "18:00",
       "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "kickoff_tehran_day_offset": 1,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 1
     },
     {
       "match_id": "M016",
@@ -321,14 +335,15 @@
       "venue": "ATL",
       "venue_name": "Mercedes-Benz Stadium",
       "city": "Atlanta",
-      "date": "2026-06-20",
-      "kickoff_utc": "01:00",
+      "date": "2026-06-19",
+      "kickoff_utc": "23:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 0
     },
     {
       "match_id": "M017",
@@ -343,12 +358,13 @@
       "city": "Miami",
       "date": "2026-06-25",
       "kickoff_utc": "22:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     },
     {
       "match_id": "M018",
@@ -363,12 +379,13 @@
       "city": "Kansas City",
       "date": "2026-06-25",
       "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     },
     {
       "match_id": "M019",
@@ -383,12 +400,13 @@
       "city": "Los Angeles",
       "date": "2026-06-12",
       "kickoff_utc": "01:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 4,
-      "score_b": 1,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M020",
@@ -402,13 +420,14 @@
       "venue_name": "BC Place",
       "city": "Vancouver",
       "date": "2026-06-13",
-      "kickoff_utc": "04:00",
+      "kickoff_utc": "02:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 0,
-      "kickoff_tehran": "07:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 0
     },
     {
       "match_id": "M021",
@@ -422,13 +441,14 @@
       "venue_name": "Lumen Field",
       "city": "Seattle",
       "date": "2026-06-19",
-      "kickoff_utc": "19:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 2,
+      "score_b": 0
     },
     {
       "match_id": "M022",
@@ -442,13 +462,14 @@
       "venue_name": "Levi's Stadium",
       "city": "Santa Clara",
       "date": "2026-06-20",
-      "kickoff_utc": "04:00",
+      "kickoff_utc": "01:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "07:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 1
     },
     {
       "match_id": "M023",
@@ -461,14 +482,15 @@
       "venue": "LAX",
       "venue_name": "SoFi Stadium",
       "city": "Los Angeles",
-      "date": "2026-06-26",
+      "date": "2026-06-25",
       "kickoff_utc": "02:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "05:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M024",
@@ -481,14 +503,15 @@
       "venue": "SFO",
       "venue_name": "Levi's Stadium",
       "city": "Santa Clara",
-      "date": "2026-06-26",
+      "date": "2026-06-25",
       "kickoff_utc": "02:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "05:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M025",
@@ -502,13 +525,14 @@
       "venue_name": "NRG Stadium",
       "city": "Houston",
       "date": "2026-06-14",
-      "kickoff_utc": "17:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 7,
-      "score_b": 1,
-      "kickoff_tehran": "20:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M026",
@@ -523,12 +547,13 @@
       "city": "Philadelphia",
       "date": "2026-06-15",
       "kickoff_utc": "01:00",
+      "kickoff_local": "21:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 0
     },
     {
       "match_id": "M027",
@@ -542,13 +567,14 @@
       "venue_name": "BMO Field",
       "city": "Toronto",
       "date": "2026-06-20",
-      "kickoff_utc": "20:00",
+      "kickoff_utc": "23:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "23:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 2,
+      "score_b": 1
     },
     {
       "match_id": "M028",
@@ -563,12 +589,13 @@
       "city": "Kansas City",
       "date": "2026-06-21",
       "kickoff_utc": "00:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "19:00",
       "kickoff_tehran": "03:30",
-      "kickoff_tehran_day_offset": 0
+      "kickoff_tehran_day_offset": 0,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 0
     },
     {
       "match_id": "M029",
@@ -583,12 +610,13 @@
       "city": "East Rutherford NJ",
       "date": "2026-06-25",
       "kickoff_utc": "20:00",
+      "kickoff_local": "16:00",
+      "kickoff_tehran": "23:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "23:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M030",
@@ -603,12 +631,13 @@
       "city": "Philadelphia",
       "date": "2026-06-25",
       "kickoff_utc": "20:00",
+      "kickoff_local": "16:00",
+      "kickoff_tehran": "23:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "23:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M031",
@@ -622,13 +651,14 @@
       "venue_name": "AT&T Stadium",
       "city": "Dallas",
       "date": "2026-06-14",
-      "kickoff_utc": "20:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 2,
-      "kickoff_tehran": "23:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 2
     },
     {
       "match_id": "M032",
@@ -642,13 +672,14 @@
       "venue_name": "Estadio BBVA",
       "city": "Monterrey",
       "date": "2026-06-15",
-      "kickoff_utc": "02:00",
+      "kickoff_utc": "01:00",
+      "kickoff_local": "20:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 5,
-      "score_b": 1,
-      "kickoff_tehran": "05:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M033",
@@ -662,13 +693,14 @@
       "venue_name": "NRG Stadium",
       "city": "Houston",
       "date": "2026-06-20",
-      "kickoff_utc": "17:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "20:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 5,
+      "score_b": 1
     },
     {
       "match_id": "M034",
@@ -682,13 +714,14 @@
       "venue_name": "Estadio Akron",
       "city": "Guadalajara",
       "date": "2026-06-21",
-      "kickoff_utc": "04:00",
+      "kickoff_utc": "02:00",
+      "kickoff_local": "21:00",
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "07:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 4
     },
     {
       "match_id": "M035",
@@ -703,12 +736,13 @@
       "city": "Dallas",
       "date": "2026-06-25",
       "kickoff_utc": "23:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "02:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     },
     {
       "match_id": "M036",
@@ -723,12 +757,13 @@
       "city": "Kansas City",
       "date": "2026-06-25",
       "kickoff_utc": "23:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "02:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     },
     {
       "match_id": "M037",
@@ -743,12 +778,13 @@
       "city": "Atlanta",
       "date": "2026-06-15",
       "kickoff_utc": "19:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M038",
@@ -763,12 +799,13 @@
       "city": "Los Angeles",
       "date": "2026-06-16",
       "kickoff_utc": "01:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 2,
-      "score_b": 2,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 2
     },
     {
       "match_id": "M039",
@@ -783,12 +820,13 @@
       "city": "Los Angeles",
       "date": "2026-06-21",
       "kickoff_utc": "19:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "12:00",
       "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "kickoff_tehran_day_offset": 0,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 0
     },
     {
       "match_id": "M040",
@@ -803,12 +841,13 @@
       "city": "Vancouver",
       "date": "2026-06-22",
       "kickoff_utc": "01:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "18:00",
       "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "kickoff_tehran_day_offset": 0,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 3
     },
     {
       "match_id": "M041",
@@ -821,14 +860,15 @@
       "venue": "SEA",
       "venue_name": "Lumen Field",
       "city": "Seattle",
-      "date": "2026-06-27",
-      "kickoff_utc": "03:00",
+      "date": "2026-06-26",
+      "kickoff_utc": "23:00",
+      "kickoff_local": "16:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "06:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M042",
@@ -841,14 +881,15 @@
       "venue": "VAN",
       "venue_name": "BC Place",
       "city": "Vancouver",
-      "date": "2026-06-27",
-      "kickoff_utc": "03:00",
+      "date": "2026-06-26",
+      "kickoff_utc": "23:00",
+      "kickoff_local": "16:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "06:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M043",
@@ -863,12 +904,13 @@
       "city": "Atlanta",
       "date": "2026-06-15",
       "kickoff_utc": "17:00",
+      "kickoff_local": "13:00",
+      "kickoff_tehran": "20:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 0,
-      "score_b": 0,
-      "kickoff_tehran": "20:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 0
     },
     {
       "match_id": "M044",
@@ -883,12 +925,13 @@
       "city": "Miami",
       "date": "2026-06-15",
       "kickoff_utc": "22:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 1
     },
     {
       "match_id": "M045",
@@ -902,13 +945,14 @@
       "venue_name": "Mercedes-Benz Stadium",
       "city": "Atlanta",
       "date": "2026-06-21",
-      "kickoff_utc": "16:00",
+      "kickoff_utc": "19:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "19:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 2,
+      "score_b": 0
     },
     {
       "match_id": "M046",
@@ -923,12 +967,13 @@
       "city": "Miami",
       "date": "2026-06-21",
       "kickoff_utc": "22:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "18:00",
       "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "kickoff_tehran_day_offset": 1,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 0
     },
     {
       "match_id": "M047",
@@ -943,12 +988,13 @@
       "city": "Houston",
       "date": "2026-06-26",
       "kickoff_utc": "00:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "03:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M048",
@@ -963,12 +1009,13 @@
       "city": "Guadalajara",
       "date": "2026-06-26",
       "kickoff_utc": "00:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "03:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "03:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M049",
@@ -982,13 +1029,14 @@
       "venue_name": "MetLife Stadium",
       "city": "East Rutherford NJ",
       "date": "2026-06-16",
-      "kickoff_utc": "19:00",
+      "kickoff_utc": "23:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 3,
-      "score_b": 1,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M050",
@@ -1002,13 +1050,14 @@
       "venue_name": "BMO Field",
       "city": "Toronto",
       "date": "2026-06-16",
-      "kickoff_utc": "22:00",
+      "kickoff_utc": "23:00",
+      "kickoff_local": "19:00",
+      "kickoff_tehran": "02:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 4,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 4
     },
     {
       "match_id": "M051",
@@ -1022,13 +1071,14 @@
       "venue_name": "Lincoln Financial Field",
       "city": "Philadelphia",
       "date": "2026-06-22",
-      "kickoff_utc": "21:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "00:30",
-      "kickoff_tehran_day_offset": 1
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 0
     },
     {
       "match_id": "M052",
@@ -1041,14 +1091,15 @@
       "venue": "MET",
       "venue_name": "MetLife Stadium",
       "city": "East Rutherford NJ",
-      "date": "2026-06-23",
-      "kickoff_utc": "00:00",
+      "date": "2026-06-22",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "03:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 3,
+      "score_b": 2
     },
     {
       "match_id": "M053",
@@ -1063,12 +1114,13 @@
       "city": "Foxborough MA",
       "date": "2026-06-26",
       "kickoff_utc": "19:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M054",
@@ -1083,12 +1135,13 @@
       "city": "Toronto",
       "date": "2026-06-26",
       "kickoff_utc": "19:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M055",
@@ -1103,12 +1156,13 @@
       "city": "Kansas City",
       "date": "2026-06-16",
       "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 3,
-      "score_b": 0,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 0
     },
     {
       "match_id": "M056",
@@ -1118,17 +1172,18 @@
       "team_a_name": "Austria",
       "team_b": "JOR",
       "team_b_name": "Jordan",
-      "venue": "BOS",
-      "venue_name": "Gillette Stadium",
-      "city": "Foxborough MA",
+      "venue": "SFO",
+      "venue_name": "Levi's Stadium",
+      "city": "San Francisco",
       "date": "2026-06-17",
       "kickoff_utc": "01:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 3,
-      "score_b": 1,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M057",
@@ -1142,13 +1197,14 @@
       "venue_name": "AT&T Stadium",
       "city": "Dallas",
       "date": "2026-06-22",
-      "kickoff_utc": "17:00",
+      "kickoff_utc": "19:00",
+      "kickoff_local": "14:00",
+      "kickoff_tehran": "22:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "20:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 2,
+      "score_b": 0
     },
     {
       "match_id": "M058",
@@ -1160,15 +1216,16 @@
       "team_b_name": "Algeria",
       "venue": "SFO",
       "venue_name": "Levi's Stadium",
-      "city": "Santa Clara",
-      "date": "2026-06-23",
-      "kickoff_utc": "03:00",
+      "city": "San Francisco",
+      "date": "2026-06-22",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "15:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "06:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 2
     },
     {
       "match_id": "M059",
@@ -1178,17 +1235,18 @@
       "team_a_name": "Algeria",
       "team_b": "AUT",
       "team_b_name": "Austria",
-      "venue": "MET",
-      "venue_name": "MetLife Stadium",
-      "city": "East Rutherford NJ",
+      "venue": "KCI",
+      "venue_name": "Arrowhead Stadium",
+      "city": "Kansas City",
       "date": "2026-06-27",
-      "kickoff_utc": "01:00",
+      "kickoff_utc": "02:00",
+      "kickoff_local": "21:00",
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M060",
@@ -1202,13 +1260,14 @@
       "venue_name": "AT&T Stadium",
       "city": "Dallas",
       "date": "2026-06-27",
-      "kickoff_utc": "01:00",
+      "kickoff_utc": "02:00",
+      "kickoff_local": "21:00",
+      "kickoff_tehran": "05:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": null
     },
     {
       "match_id": "M061",
@@ -1223,12 +1282,13 @@
       "city": "Dallas",
       "date": "2026-06-17",
       "kickoff_utc": "01:00",
+      "kickoff_local": "20:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 1,
-      "score_b": 1,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M062",
@@ -1243,12 +1303,13 @@
       "city": "Houston",
       "date": "2026-06-17",
       "kickoff_utc": "22:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 3,
-      "score_b": 1,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 1
     },
     {
       "match_id": "M063",
@@ -1256,26 +1317,27 @@
       "matchday": 2,
       "team_a": "POR",
       "team_a_name": "Portugal",
-      "team_b": "COL",
-      "team_b_name": "Colombia",
+      "team_b": "UZB",
+      "team_b_name": "Uzbekistan",
       "venue": "BOS",
       "venue_name": "Gillette Stadium",
       "city": "Foxborough MA",
       "date": "2026-06-23",
-      "kickoff_utc": "19:00",
+      "kickoff_utc": "22:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "22:30",
-      "kickoff_tehran_day_offset": 0
+      "status": "finished",
+      "score_a": 5,
+      "score_b": 0
     },
     {
       "match_id": "M064",
       "group": "K",
       "matchday": 2,
-      "team_a": "UZB",
-      "team_a_name": "Uzbekistan",
+      "team_a": "COL",
+      "team_a_name": "Colombia",
       "team_b": "DRC",
       "team_b_name": "DR Congo",
       "venue": "MIA",
@@ -1283,12 +1345,13 @@
       "city": "Miami",
       "date": "2026-06-23",
       "kickoff_utc": "22:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "18:00",
       "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "kickoff_tehran_day_offset": 1,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 0
     },
     {
       "match_id": "M065",
@@ -1296,19 +1359,20 @@
       "matchday": 3,
       "team_a": "COL",
       "team_a_name": "Colombia",
-      "team_b": "DRC",
-      "team_b_name": "DR Congo",
+      "team_b": "POR",
+      "team_b_name": "Portugal",
       "venue": "LAX",
       "venue_name": "SoFi Stadium",
       "city": "Los Angeles",
       "date": "2026-06-27",
-      "kickoff_utc": "23:00",
+      "kickoff_utc": "23:30",
+      "kickoff_local": "16:30",
+      "kickoff_tehran": "03:00",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "02:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     },
     {
       "match_id": "M066",
@@ -1316,19 +1380,20 @@
       "matchday": 3,
       "team_a": "UZB",
       "team_a_name": "Uzbekistan",
-      "team_b": "POR",
-      "team_b_name": "Portugal",
+      "team_b": "DRC",
+      "team_b_name": "DR Congo",
       "venue": "SEA",
       "venue_name": "Lumen Field",
       "city": "Seattle",
       "date": "2026-06-27",
-      "kickoff_utc": "23:00",
+      "kickoff_utc": "23:30",
+      "kickoff_local": "16:30",
+      "kickoff_tehran": "03:00",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "02:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     },
     {
       "match_id": "M067",
@@ -1343,12 +1408,13 @@
       "city": "Atlanta",
       "date": "2026-06-17",
       "kickoff_utc": "22:00",
+      "kickoff_local": "18:00",
+      "kickoff_tehran": "01:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "finished",
       "score_a": 4,
-      "score_b": 2,
-      "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": 2
     },
     {
       "match_id": "M068",
@@ -1363,12 +1429,13 @@
       "city": "East Rutherford NJ",
       "date": "2026-06-17",
       "kickoff_utc": "01:00",
+      "kickoff_local": "21:00",
+      "kickoff_tehran": "04:30",
+      "kickoff_tehran_day_offset": 0,
       "stage": "group",
       "status": "finished",
       "score_a": 0,
-      "score_b": 1,
-      "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "score_b": 1
     },
     {
       "match_id": "M069",
@@ -1376,19 +1443,20 @@
       "matchday": 2,
       "team_a": "ENG",
       "team_a_name": "England",
-      "team_b": "PAN",
-      "team_b_name": "Panama",
+      "team_b": "GHA",
+      "team_b_name": "Ghana",
       "venue": "MET",
       "venue_name": "MetLife Stadium",
       "city": "East Rutherford NJ",
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "kickoff_utc": "22:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "18:00",
       "kickoff_tehran": "01:30",
-      "kickoff_tehran_day_offset": 1
+      "kickoff_tehran_day_offset": 1,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 0
     },
     {
       "match_id": "M070",
@@ -1396,19 +1464,20 @@
       "matchday": 2,
       "team_a": "CRO",
       "team_a_name": "Croatia",
-      "team_b": "GHA",
-      "team_b_name": "Ghana",
-      "venue": "PHI",
-      "venue_name": "Lincoln Financial Field",
-      "city": "Philadelphia",
-      "date": "2026-06-23",
+      "team_b": "PAN",
+      "team_b_name": "Panama",
+      "venue": "TOR",
+      "venue_name": "BMO Field",
+      "city": "Toronto",
+      "date": "2026-06-24",
       "kickoff_utc": "01:00",
-      "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null,
+      "kickoff_local": "21:00",
       "kickoff_tehran": "04:30",
-      "kickoff_tehran_day_offset": 0
+      "kickoff_tehran_day_offset": 0,
+      "stage": "group",
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 0
     },
     {
       "match_id": "M071",
@@ -1423,12 +1492,13 @@
       "city": "East Rutherford NJ",
       "date": "2026-06-27",
       "kickoff_utc": "21:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "00:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "00:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     },
     {
       "match_id": "M072",
@@ -1443,12 +1513,13 @@
       "city": "Philadelphia",
       "date": "2026-06-27",
       "kickoff_utc": "21:00",
+      "kickoff_local": "17:00",
+      "kickoff_tehran": "00:30",
+      "kickoff_tehran_day_offset": 1,
       "stage": "group",
       "status": "scheduled",
       "score_a": null,
-      "score_b": null,
-      "kickoff_tehran": "00:30",
-      "kickoff_tehran_day_offset": 1
+      "score_b": null
     }
   ]
 }
