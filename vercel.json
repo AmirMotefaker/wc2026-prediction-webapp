@@ -3,13 +3,19 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "functions": {
-    "api/fifa-rankings.js": { "maxDuration": 10 },
-    "api/calculate-scores.js": { "maxDuration": 30 }
+    "api/fifa-rankings.js":  { "maxDuration": 10 },
+    "api/predict-engine.js": { "maxDuration": 15 },
+    "api/calculate-scores.js": { "maxDuration": 30 },
+    "api/sync-results.js":   { "maxDuration": 30 }
   },
   "crons": [
     {
-      "path": "/api/calculate-scores",
+      "path": "/api/sync-results",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/calculate-scores",
+      "schedule": "0 1 * * *"
     }
   ]
 }
