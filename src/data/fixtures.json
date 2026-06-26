@@ -4,9 +4,9 @@
     "stage": "group_stage",
     "total_matches": 72,
     "data_source": "Yahoo Sports, CBS Sports, UEFA, ESPN — verified Jun 25, 2026",
-    "last_updated": "2026-06-25",
-    "results_status": "MD1 complete all groups, MD2 complete all groups, MD3 in progress",
-    "version": "4.0"
+    "last_updated": "2026-06-26",
+    "results_status": "Groups A-C MD3 complete. Groups D-F MD3 in progress (Jun 25). Groups G-I MD3 today (Jun 26). Groups J-L MD3 tomorrow (Jun 27).",
+    "version": "5.0"
   },
   "fixtures": [
     {
@@ -362,9 +362,9 @@
       "kickoff_tehran": "01:30",
       "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 0,
+      "score_b": 3
     },
     {
       "match_id": "M018",
@@ -383,9 +383,9 @@
       "kickoff_tehran": "01:30",
       "kickoff_tehran_day_offset": 1,
       "stage": "group",
-      "status": "scheduled",
-      "score_a": null,
-      "score_b": null
+      "status": "finished",
+      "score_a": 1,
+      "score_b": 0
     },
     {
       "match_id": "M019",
