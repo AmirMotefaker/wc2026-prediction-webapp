@@ -1,11 +1,7 @@
 // api/sync-results.js
-//
-// Vercel Serverless Function — runs every day via Cron Job
-// Fetches latest WC2026 match results from free public APIs and
-// updates Firestore with real scores automatically.
-//
-// No API key needed — uses worldcup26.ir (primary) with
-// wcup2026.org as fallback.
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const fixturesData = require("../src/data/fixtures.json");
 
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
@@ -21,71 +17,48 @@ function getAdminApp() {
   });
 }
 
-// ── Try worldcup26.ir ──────────────────────────────────────────────
+function normalizeTeamName(name = "") {
+  return name.toLowerCase().replace(/[^a-z]/g, "")
+    .replace("unitedstates", "usa")
+    .replace("drcongodemocratic", "drcongo")
+    .replace("côtedivoire", "ivorycoast");
+}
+
 async function fetchFromWorldcup26ir() {
   const res = await fetch("https://worldcup26.ir/get/games", {
     headers: { "Accept": "application/json", "User-Agent": "WC2026-App/1.0" },
   });
   if (!res.ok) throw new Error(`worldcup26.ir returned ${res.status}`);
   const data = await res.json();
-  // Shape: [{homeTeam, awayTeam, homeScore, awayScore, status, date, ...}]
   const games = Array.isArray(data) ? data : (data.games || data.matches || []);
   if (!games.length) throw new Error("worldcup26.ir returned empty array");
   return games.map(g => ({
-    home: g.homeTeam?.name || g.home_team || g.teamA,
-    away: g.awayTeam?.name || g.away_team || g.teamB,
+    home: g.homeTeam?.name || g.home_team || g.teamA || g.home || "",
+    away: g.awayTeam?.name || g.away_team || g.teamB || g.away || "",
     homeScore: g.homeScore ?? g.home_score ?? g.scoreA ?? null,
     awayScore: g.awayScore ?? g.away_score ?? g.scoreB ?? null,
     status: g.status || (g.homeScore !== null ? "finished" : "scheduled"),
-    date: g.date || g.kickoff || g.matchDate,
   }));
 }
 
-// ── Try wcup2026.org ───────────────────────────────────────────────
 async function fetchFromWcup2026org() {
-  const res = await fetch("https://wcup2026.org/api/data.php?action=standings", {
+  const res = await fetch("https://wcup2026.org/api/data.php?action=matches", {
     headers: { "Accept": "application/json", "User-Agent": "WC2026-App/1.0" },
   });
   if (!res.ok) throw new Error(`wcup2026.org returned ${res.status}`);
   const data = await res.json();
-  const matches = data.matches || data.fixtures || [];
-  if (!matches.length) throw new Error("wcup2026.org returned empty array");
+  const matches = data.matches || data.fixtures || data || [];
+  if (!Array.isArray(matches) || !matches.length) throw new Error("wcup2026.org returned empty");
   return matches.map(g => ({
-    home: g.home_team || g.teamA || g.home,
-    away: g.away_team || g.teamB || g.away,
+    home: g.home_team || g.teamA || g.home || "",
+    away: g.away_team || g.teamB || g.away || "",
     homeScore: g.home_score ?? g.scoreA ?? null,
     awayScore: g.away_score ?? g.scoreB ?? null,
     status: g.status || (g.home_score !== null ? "finished" : "scheduled"),
-    date: g.date || g.kickoff,
   }));
 }
 
-// ── Match our fixture IDs to the external API data ─────────────────
-function normalizeTeamName(name = "") {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z]/g, "")
-    .replace("unitedstates", "usa")
-    .replace("drcongodemocratic", "drcongo")
-    .replace("ivorycoast", "côtedivoire")
-    .replace("costarica", "costarica")
-    .replace("newzealand", "newzealand");
-}
-
-function matchFixture(fixture, externalGames) {
-  const homeKey = normalizeTeamName(fixture.team_a_name);
-  const awayKey = normalizeTeamName(fixture.team_b_name);
-  return externalGames.find(g => {
-    const gHome = normalizeTeamName(g.home);
-    const gAway = normalizeTeamName(g.away);
-    return (gHome === homeKey && gAway === awayKey) ||
-           (gHome === awayKey && gAway === homeKey);
-  });
-}
-
-// ── Main handler ───────────────────────────────────────────────────
 export default async function handler(req, res) {
-  // Secure with CRON_SECRET (set in Vercel env vars)
   const authHeader = req.headers["authorization"];
   if (process.env.CRON_SECRET && authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return res.status(401).json({ error: "Unauthorized" });
@@ -95,17 +68,17 @@ export default async function handler(req, res) {
     getAdminApp();
     const db = getFirestore();
 
-    // 1. Load our internal fixtures from Firestore cache
+    // Load from Firestore cache, fall back to local fixtures.json
     const fixturesSnap = await db.collection("cache").doc("fixtures").get();
-    const fixtures = fixturesSnap.exists
-      ? fixturesSnap.data().fixtures
-      : [];
+    let fixtures = fixturesSnap.exists
+      ? (fixturesSnap.data().fixtures || [])
+      : fixturesData.fixtures;
 
     if (!fixtures.length) {
-      return res.status(200).json({ message: "No fixtures in cache yet — skipping sync", updated: 0 });
+      fixtures = fixturesData.fixtures;
     }
 
-    // 2. Fetch external results with fallback
+    // Fetch external results
     let externalGames = [];
     let source = "none";
     try {
@@ -122,27 +95,33 @@ export default async function handler(req, res) {
     }
 
     if (!externalGames.length) {
-      return res.status(200).json({ message: "All external APIs unavailable", source: "none", updated: 0 });
+      return res.status(200).json({
+        message: "All external APIs unavailable — keeping existing data",
+        source: "none", updated: 0
+      });
     }
 
-    // 3. Update fixtures with real scores
     let updatedCount = 0;
     const updatedFixtures = fixtures.map(fixture => {
-      if (fixture.status === "finished") return fixture; // already done, skip
+      if (fixture.status === "finished") return fixture;
 
-      const match = matchFixture(fixture, externalGames);
+      const homeKey = normalizeTeamName(fixture.team_a_name);
+      const awayKey = normalizeTeamName(fixture.team_b_name);
+
+      const match = externalGames.find(g => {
+        const gHome = normalizeTeamName(g.home);
+        const gAway = normalizeTeamName(g.away);
+        return (gHome === homeKey && gAway === awayKey) ||
+               (gHome === awayKey && gAway === homeKey);
+      });
+
       if (!match) return fixture;
-
       const isFinished = match.status === "finished" ||
         (match.homeScore !== null && match.awayScore !== null);
-
       if (!isFinished) return fixture;
 
       updatedCount++;
-      // Handle reversed home/away
-      const homeKey = normalizeTeamName(fixture.team_a_name);
       const reversed = normalizeTeamName(match.home) !== homeKey;
-
       return {
         ...fixture,
         status: "finished",
@@ -151,7 +130,6 @@ export default async function handler(req, res) {
       };
     });
 
-    // 4. Save back to Firestore cache
     await db.collection("cache").doc("fixtures").set({
       fixtures: updatedFixtures,
       lastSynced: new Date().toISOString(),
@@ -160,10 +138,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       message: "Sync complete",
-      source,
-      totalFixtures: fixtures.length,
-      updatedCount,
-      timestamp: new Date().toISOString(),
+      source, totalFixtures: fixtures.length,
+      updatedCount, timestamp: new Date().toISOString(),
     });
   } catch (err) {
     console.error("sync-results error:", err);
