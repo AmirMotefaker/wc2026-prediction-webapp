@@ -1,6 +1,6 @@
 // api/sync-results.js
-// Auto-syncs WC2026 results from openfootball/worldcup.json (free, no API key)
-// Runs daily via Vercel Cron. Updates Firestore cache used by the React app.
+// Syncs WC2026 results from wcup2026.org (free, no API key, live results)
+// Fallback: openfootball/worldcup.json on GitHub
 
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -19,39 +19,51 @@ function getAdminApp() {
   });
 }
 
-// ── Name normalization for fuzzy matching ─────────────────────────────────────
 function norm(name = "") {
   return name.toLowerCase()
     .replace(/[^a-z]/g, "")
     .replace("unitedstates", "usa")
-    .replace("usamerica", "usa")
     .replace("democraticrepublicofcongo", "drcongo")
-    .replace("drcongo", "drcongo")
-    .replace("costarica", "costarica")
-    .replace("newzealand", "newzealand")
+    .replace("ivorycoast", "cotedivoire")
+    .replace("cotedivoire", "cotedivoire")
     .replace("bosniaandherzegovina", "bosnia")
     .replace("bosniaherzegovina", "bosnia")
-    .replace("ivorycoast", "cotedivoire")
-    .replace("coteivoire", "cotedivoire")
-    .replace("capeverde", "capeverde")
-    .replace("saudiarabia", "saudiarabia")
+    .replace("czechrepublic", "czechia")
     .replace("southkorea", "korea")
     .replace("korearepublic", "korea")
-    .replace("czechia", "czechia")
-    .replace("czechrepublic", "czechia");
+    .replace("curaçao", "curacao");
 }
 
-// ── Fetch from openfootball (primary, free, no key) ───────────────────────────
-async function fetchOpenfootball() {
-  const url = "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json";
-  const res = await fetch(url, {
-    headers: { "User-Agent": "WC2026-Predictor/1.0" },
-    cache: "no-store",
+// ── Primary: wcup2026.org JSON API ───────────────────────────────────────────
+async function fetchWcup2026org() {
+  const res = await fetch("https://wcup2026.org/api/data.php", {
+    headers: { "Accept": "application/json", "User-Agent": "WC2026-Predictor/1.0" },
   });
+  if (!res.ok) throw new Error(`wcup2026.org returned ${res.status}`);
+  const data = await res.json();
+
+  // Try multiple possible response shapes
+  const matches = data.matches || data.fixtures || data.games || (Array.isArray(data) ? data : []);
+  if (!matches.length) throw new Error("wcup2026.org returned no matches");
+
+  return matches.map(m => ({
+    home:      m.home_team || m.teamA || m.home || m.team1 || "",
+    away:      m.away_team || m.teamB || m.away || m.team2 || "",
+    homeScore: m.home_score ?? m.scoreA ?? m.score1 ?? null,
+    awayScore: m.away_score ?? m.scoreB ?? m.score2 ?? null,
+    status:    m.status || (m.home_score !== null && m.home_score !== undefined ? "finished" : "scheduled"),
+  }));
+}
+
+// ── Fallback: openfootball GitHub raw JSON ────────────────────────────────────
+async function fetchOpenfootball() {
+  const res = await fetch(
+    "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
+    { headers: { "User-Agent": "WC2026-Predictor/1.0" }, cache: "no-store" }
+  );
   if (!res.ok) throw new Error(`openfootball returned ${res.status}`);
   const data = await res.json();
 
-  // openfootball format: { "rounds": [ { "matches": [ { "team1": {"name": "..."}, "team2": {...}, "score": {"ft": [2,0]}, ... } ] } ] }
   const matches = [];
   for (const round of (data.rounds || [])) {
     for (const m of (round.matches || [])) {
@@ -63,30 +75,11 @@ async function fetchOpenfootball() {
         homeScore: finished ? ft[0] : null,
         awayScore: finished ? ft[1] : null,
         status:    finished ? "finished" : "scheduled",
-        date:      m.date || "",
       });
     }
   }
   if (!matches.length) throw new Error("openfootball returned no matches");
   return matches;
-}
-
-// ── Fetch from worldcup26.ir (fallback) ──────────────────────────────────────
-async function fetchWorldcup26ir() {
-  const res = await fetch("https://worldcup26.ir/get/games", {
-    headers: { "Accept": "application/json", "User-Agent": "WC2026-Predictor/1.0" },
-  });
-  if (!res.ok) throw new Error(`worldcup26.ir returned ${res.status}`);
-  const data = await res.json();
-  const games = Array.isArray(data) ? data : (data.games || data.matches || []);
-  if (!games.length) throw new Error("worldcup26.ir empty");
-  return games.map(g => ({
-    home:      g.homeTeam?.name || g.home_team || g.teamA || g.home || "",
-    away:      g.awayTeam?.name || g.away_team || g.teamB || g.away || "",
-    homeScore: g.homeScore ?? g.home_score ?? g.scoreA ?? null,
-    awayScore: g.awayScore ?? g.away_score ?? g.scoreB ?? null,
-    status:    g.status || (g.homeScore !== null ? "finished" : "scheduled"),
-  }));
 }
 
 // ── Main handler ──────────────────────────────────────────────────────────────
@@ -100,34 +93,36 @@ export default async function handler(req, res) {
     getAdminApp();
     const db = getFirestore();
 
-    // Load fixtures from Firestore
     const cacheSnap = await db.collection("cache").doc("fixtures").get();
     const fixtures = cacheSnap.exists ? (cacheSnap.data().fixtures || []) : [];
     if (!fixtures.length) {
-      return res.status(200).json({ message: "No fixtures in cache — run /api/init-fixtures first", updated: 0 });
+      return res.status(200).json({ message: "No fixtures — run /api/init-fixtures first", updated: 0 });
     }
 
-    // Fetch external results
+    // Try sources in order
     let externalGames = [];
     let source = "none";
-    try {
-      externalGames = await fetchOpenfootball();
-      source = "openfootball";
-    } catch (e1) {
-      console.warn("openfootball failed:", e1.message);
+    const errors = [];
+
+    for (const [name, fn] of [["wcup2026.org", fetchWcup2026org], ["openfootball", fetchOpenfootball]]) {
       try {
-        externalGames = await fetchWorldcup26ir();
-        source = "worldcup26.ir";
-      } catch (e2) {
-        console.warn("worldcup26.ir failed:", e2.message);
+        externalGames = await fn();
+        source = name;
+        break;
+      } catch (e) {
+        errors.push(`${name}: ${e.message}`);
+        console.warn(`${name} failed:`, e.message);
       }
     }
 
     if (!externalGames.length) {
-      return res.status(200).json({ message: "All external APIs unavailable", updated: 0 });
+      return res.status(200).json({
+        message: "All sources unavailable",
+        errors, updated: 0,
+      });
     }
 
-    // Match and update
+    // Update fixtures
     let updatedCount = 0;
     const updatedFixtures = fixtures.map(fixture => {
       if (fixture.status === "finished") return fixture;
@@ -167,10 +162,10 @@ export default async function handler(req, res) {
       totalFixtures: fixtures.length,
       newlyUpdated:  updatedCount,
       totalFinished: updatedFixtures.filter(f => f.status === "finished").length,
+      externalMatchesFound: externalGames.length,
       timestamp:     new Date().toISOString(),
     });
   } catch (err) {
-    console.error("sync-results error:", err);
     return res.status(500).json({ error: err.message });
   }
 }
