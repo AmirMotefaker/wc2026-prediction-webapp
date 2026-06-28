@@ -1,41 +1,45 @@
-// api/debug-sync.js — temporary: shows raw data from external APIs
+// api/debug-sync.js - check what's in Firestore for group H
+import { initializeApp, getApps, cert } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+
+function getAdminApp() {
+  if (getApps().length > 0) return getApps()[0];
+  return initializeApp({
+    credential: cert({
+      projectId:   process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey:  (process.env.FIREBASE_PRIVATE_KEY || "").replace(/\\n/g, "\n"),
+    }),
+  });
+}
+
 export default async function handler(req, res) {
-  const results = {};
-
-  // Test wcup2026.org
   try {
-    const r = await fetch("https://wcup2026.org/api/data.php", {
-      headers: { "Accept": "application/json", "User-Agent": "WC2026/1.0" },
-    });
-    const data = await r.json();
-    results.wcup2026org = {
-      status: r.status,
-      keys: Object.keys(data),
-      sample: JSON.stringify(data).slice(0, 800),
-    };
-  } catch(e) { results.wcup2026org = { error: e.message }; }
+    getAdminApp();
+    const db = getFirestore();
+    const snap = await db.collection("cache").doc("fixtures").get();
+    if (!snap.exists) return res.status(200).json({ error: "No cache document" });
 
-  // Test openfootball
-  try {
-    const r = await fetch(
-      "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
-      { headers: { "User-Agent": "WC2026/1.0" }, cache: "no-store" }
-    );
-    const data = await r.json();
-    const rounds = data.rounds || [];
-    const allMatches = rounds.flatMap(rnd => rnd.matches || []);
-    const finished = allMatches.filter(m => m.score?.ft);
-    results.openfootball = {
-      status: r.status,
-      totalMatches: allMatches.length,
-      finishedMatches: finished.length,
-      sampleFinished: finished.slice(0,3).map(m => ({
-        team1: m.team1?.name,
-        team2: m.team2?.name,
-        ft: m.score?.ft,
+    const data = snap.data();
+    const groupH = (data.fixtures || []).filter(f => f.group === "H");
+    const groupE = (data.fixtures || []).filter(f => f.group === "E");
+
+    return res.status(200).json({
+      lastSynced: data.lastSynced,
+      source: data.source,
+      totalFixtures: (data.fixtures || []).length,
+      groupH: groupH.map(f => ({
+        id: f.match_id, md: f.matchday,
+        teams: `${f.team_a_name} vs ${f.team_b_name}`,
+        status: f.status, score: `${f.score_a}-${f.score_b}`
       })),
-    };
-  } catch(e) { results.openfootball = { error: e.message }; }
-
-  return res.status(200).json(results);
+      groupE: groupE.map(f => ({
+        id: f.match_id, md: f.matchday,
+        teams: `${f.team_a_name} vs ${f.team_b_name}`,
+        status: f.status, score: `${f.score_a}-${f.score_b}`
+      })),
+    });
+  } catch(e) {
+    return res.status(500).json({ error: e.message });
+  }
 }
