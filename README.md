@@ -3,7 +3,7 @@
 [![Firebase](https://img.shields.io/badge/Firebase-Auth%20%2B%20Firestore-FFCA28?logo=firebase&logoColor=white)](https://firebase.google.com)
 [![License](https://img.shields.io/github/license/AmirMotefaker/wc2026-prediction-webapp)](./LICENSE)
 
-# ⚽ WC2026 Predictin Web App
+# ⚽ WC2026 Prediction Web App
 
 > A React + Firebase web application where users sign up, predict FIFA World Cup 2026 match scores, and compete on a leaderboard.
 
