@@ -15,10 +15,10 @@ const GITHUB_URL = "https://github.com/AmirMotefaker/wc2026-prediction-webapp";
 const SITE_URL   = "https://amirmotefaker.ir";
 
 const NAV_LINKS = [
-  { to: "/",                label: "Home",     icon: "🏠" },
-  { to: "/groups",          label: "Groups",   icon: "🗂️" },
-  { to: "/fixtures",        label: "Fixtures", icon: "📅" },
-  { to: "/my-predictions",  label: "My Picks", icon: "🎯" },
+  { to: "/",                label: "Dashboard",  icon: "⚽" },
+  { to: "/my-predictions",  label: "My Picks",   icon: "🎯" },
+  { to: "/groups",          label: "Groups",     icon: "🗂️" },
+  { to: "/fixtures",        label: "Fixtures",   icon: "📅" },
 ];
 
 function GitHubIcon({ className }) {

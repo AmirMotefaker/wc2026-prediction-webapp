@@ -1,4 +1,5 @@
-// api/calculate-scores.js
+// api/calculate-scores.js — Updated with new scoring rules
+
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
@@ -16,11 +17,20 @@ function getAdminApp() {
   });
 }
 
-function outcome(a, b) { return a > b ? "A" : a < b ? "B" : "D"; }
-function pointsFor(pred, result) {
-  if (pred.scoreA === result.scoreA && pred.scoreB === result.scoreB) return 3;
-  if (outcome(pred.scoreA, pred.scoreB) === outcome(result.scoreA, result.scoreB)) return 1;
-  return 0;
+// ── New scoring rules ─────────────────────────────────────────────
+// 10 pts — exact scoreline
+// 7 pts  — correct goal difference (e.g. predicted 2-0, actual 3-1)
+// 5 pts  — correct winner/loser/draw
+// 2 pts  — wrong prediction (participation points)
+function calculatePoints(predA, predB, actualA, actualB) {
+  if (predA === actualA && predB === actualB) return 10;
+  const predDiff   = predA - predB;
+  const actualDiff = actualA - actualB;
+  if (predDiff === actualDiff) return 7;
+  const predOutcome   = predDiff > 0 ? "W" : predDiff < 0 ? "L" : "D";
+  const actualOutcome = actualDiff > 0 ? "W" : actualDiff < 0 ? "L" : "D";
+  if (predOutcome === actualOutcome) return 5;
+  return 2;
 }
 
 export default async function handler(req, res) {
@@ -57,11 +67,20 @@ export default async function handler(req, res) {
         .where("scored", "==", false)
         .get();
 
-      for (const doc of snap.docs) {
-        const pred = doc.data();
+      for (const docRef of snap.docs) {
+        const pred   = docRef.data();
         const result = finishedMatches[matchId];
-        const pts = pointsFor(pred, result);
-        await doc.ref.update({ scored: true, pointsAwarded: pts });
+        const pts    = calculatePoints(pred.scoreA, pred.scoreB, result.scoreA, result.scoreB);
+
+        await docRef.ref.update({
+          scored:        true,
+          pointsAwarded: pts,
+          pointsBreakdown: {
+            predA: pred.scoreA, predB: pred.scoreB,
+            actualA: result.scoreA, actualB: result.scoreB,
+          },
+        });
+
         userPointsDelta[pred.uid] = (userPointsDelta[pred.uid] || 0) + pts;
         scoredCount++;
       }
@@ -75,11 +94,12 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({
-      message: "Scoring complete",
-      matchesProcessed: matchIds.length,
+      message:           "Scoring complete",
+      matchesProcessed:  matchIds.length,
       predictionsScored: scoredCount,
-      usersUpdated: Object.keys(userPointsDelta).length,
-      timestamp: new Date().toISOString(),
+      usersUpdated:      Object.keys(userPointsDelta).length,
+      scoringRules:      { exact: 10, goalDiff: 7, outcome: 5, wrong: 2 },
+      timestamp:         new Date().toISOString(),
     });
   } catch (err) {
     console.error("Scoring error:", err);
