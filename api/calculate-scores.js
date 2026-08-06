@@ -1,7 +1,5 @@
 // api/calculate-scores.js — Updated with new scoring rules
 
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
 
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";

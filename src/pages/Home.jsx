@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
 import { db } from "../firebase";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { useFixtures } from "../hooks/useFixtures";
 import { useFIFARankings } from "../hooks/useFIFARankings";
 

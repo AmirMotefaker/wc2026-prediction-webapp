@@ -1,7 +1,7 @@
 // src/App.jsx — safe version with error boundaries
 
 import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
