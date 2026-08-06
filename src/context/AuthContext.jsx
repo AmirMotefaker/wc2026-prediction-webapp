@@ -3,15 +3,14 @@
 // Provides authentication state (current user) to the entire app.
 // Wrap your <App /> with <AuthProvider> in main.jsx
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   onAuthStateChanged,
   signOut as firebaseSignOut,
 } from "firebase/auth";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../firebase";
-
-const AuthContext = createContext(null);
+import AuthContext from "./auth-context";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -57,10 +56,4 @@ export function AuthProvider({ children }) {
   const value = { user, profile, loading, signOut };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
-  return ctx;
 }

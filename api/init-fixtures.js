@@ -22,6 +22,11 @@ function getAdminApp() {
 
 export default async function handler(req, res) {
   const secret = req.query.secret || (req.headers["authorization"] || "").replace("Bearer ", "");
+  const expectedSecret = process.env.CRON_SECRET;
+
+  if (!expectedSecret || secret !== expectedSecret) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
 
   try {
     getAdminApp();

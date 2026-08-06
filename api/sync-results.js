@@ -1,8 +1,6 @@
 // api/sync-results.js
 // Syncs ALL WC2026 results from wcup2026.org
 
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
 
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";

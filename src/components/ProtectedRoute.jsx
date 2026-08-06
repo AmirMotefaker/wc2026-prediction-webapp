@@ -4,7 +4,7 @@
 // Redirects to /login if user is not signed in.
 
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 export default function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();

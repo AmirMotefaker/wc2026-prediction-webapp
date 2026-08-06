@@ -10,18 +10,18 @@ import {
   doc, setDoc, getDocs, collection, query, where, serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "./useAuth";
 
 export function usePredictions() {
   const { user } = useAuth();
   const [predictions, setPredictions] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loadedUserId, setLoadedUserId] = useState(null);
 
   useEffect(() => {
-    if (!user) {
-      setLoading(false);
-      return;
-    }
+    if (!user) return undefined;
+
+    let active = true;
+
     async function load() {
       try {
         const q = query(
@@ -40,15 +40,27 @@ export function usePredictions() {
             updatedAt: data.updatedAt ?? null,
           };
         });
-        setPredictions(map);
+
+        if (active) {
+          setPredictions(map);
+        }
       } catch (err) {
         console.error("Load predictions error:", err);
       } finally {
-        setLoading(false);
+        if (active) {
+          setLoadedUserId(user.uid);
+        }
       }
     }
+
     load();
+
+    return () => {
+      active = false;
+    };
   }, [user]);
+
+  const loading = Boolean(user) && loadedUserId !== user.uid;
 
   const savePrediction = useCallback(
     async (matchId, scoreA, scoreB) => {

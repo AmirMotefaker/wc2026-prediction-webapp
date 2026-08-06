@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 const MAX_PHOTO_BYTES = 300 * 1024; // ~300KB after compression, fits comfortably in a Firestore field
 
